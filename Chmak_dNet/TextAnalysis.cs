@@ -64,8 +64,8 @@ namespace Chmak_dNet
                 NumbersCount();
             }
             symbolsCount = fileText.Length-1;
-            //CharsTotalCount();
-            //updatedict = (from d in updatedict orderby d.Value descending select d).ToDictionary(p => p.Key, p => p.Value);
+            SortRepo();
+            
         }
 
 
@@ -126,6 +126,14 @@ namespace Chmak_dNet
             return updatedict;
         }
 
+        // Сортировка словарей для красивого отображения (по убыванию)
+        public void SortRepo()
+        {
+            dictLetters = (from d in dictLetters orderby d.Value descending select d).ToDictionary(p => p.Key, p => p.Value);
+            dictDigitals = (from d in dictDigitals orderby d.Value descending select d).ToDictionary(p => p.Key, p => p.Value);
+            dictPunctuation = (from d in dictPunctuation orderby d.Value descending select d).ToDictionary(p => p.Key, p => p.Value);
+            dictWords = (from d in dictWords orderby d.Value descending select d).ToDictionary(p => p.Key, p => p.Value);
+        }
 
         string resLetters;
         string resDigitals ;
